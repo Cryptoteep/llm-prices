@@ -88,6 +88,34 @@ import prices from "llm-prices/data" with { type: "json" };
 
 TypeScript definitions included.
 
+## Use in CI
+
+Print the cost of your test-suite's LLM calls on every pipeline run — no install step, `npx` fetches the CLI on the fly:
+
+```yaml
+# .github/workflows/llm-cost.yml
+name: LLM cost report
+on: [pull_request]
+
+jobs:
+  cost:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/setup-node@v4
+        with: { node-version: 20 }
+      # replace the token counts with your run's actuals
+      - run: npx -y llm-prices claude-opus-4-8 --in 250k --out 12k >> "$GITHUB_STEP_SUMMARY"
+```
+
+Or budget-gate a script programmatically:
+
+```js
+import { calcCost } from "llm-prices";
+
+const cost = calcCost(process.env.MODEL, { input: usedIn, output: usedOut });
+if (cost.total > 5) throw new Error(`LLM budget exceeded: $${cost.total.toFixed(2)}`);
+```
+
 ## Keeping prices fresh
 
 The dataset ships inside the package and is refreshed with regular releases. To regenerate locally from the live source:

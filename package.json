@@ -1,6 +1,6 @@
 {
   "name": "llm-prices",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Up-to-date LLM pricing reference and cost calculator — Claude, GPT, Gemini, DeepSeek, Mistral, Grok. Zero dependencies, library + CLI.",
   "keywords": [
     "llm",
