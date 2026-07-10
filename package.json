@@ -1,0 +1,64 @@
+{
+  "name": "llm-prices",
+  "version": "1.0.0",
+  "description": "Up-to-date LLM pricing reference and cost calculator — Claude, GPT, Gemini, DeepSeek, Mistral, Grok. Zero dependencies, library + CLI.",
+  "keywords": [
+    "llm",
+    "pricing",
+    "prices",
+    "cost",
+    "calculator",
+    "tokens",
+    "openai",
+    "anthropic",
+    "claude",
+    "gpt",
+    "gemini",
+    "deepseek",
+    "mistral",
+    "grok",
+    "ai",
+    "api-cost",
+    "token-cost",
+    "cli"
+  ],
+  "license": "MIT",
+  "author": "Cryptoteep",
+  "homepage": "https://github.com/Cryptoteep/llm-prices#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Cryptoteep/llm-prices.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Cryptoteep/llm-prices/issues"
+  },
+  "main": "./index.cjs",
+  "module": "./index.mjs",
+  "types": "./index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./index.d.ts",
+      "import": "./index.mjs",
+      "require": "./index.cjs"
+    },
+    "./data": "./data/prices.json"
+  },
+  "bin": {
+    "llm-prices": "bin/cli.js"
+  },
+  "files": [
+    "index.cjs",
+    "index.mjs",
+    "index.d.ts",
+    "bin/",
+    "data/",
+    "scripts/"
+  ],
+  "scripts": {
+    "test": "node --test test/basic.test.cjs",
+    "update-prices": "node scripts/update.mjs"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
