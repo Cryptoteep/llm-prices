@@ -1,0 +1,24 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: [18, 20, 22]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+      - run: npm test
+      - name: CLI smoke test
+        run: |
+          node bin/cli.js claude-opus-5 --in 200k --out 8k
+          node bin/cli.js compare claude-opus-5 gpt-5.2 --in 200k --out 8k
+          node bin/cli.js cheapest --caps vision --top 3

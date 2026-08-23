@@ -1,7 +1,7 @@
 {
   "name": "llm-prices",
-  "version": "1.0.1",
-  "description": "Up-to-date LLM pricing reference and cost calculator — Claude, GPT, Gemini, DeepSeek, Mistral, Grok. Zero dependencies, library + CLI.",
+  "version": "1.1.0",
+  "description": "Up-to-date LLM pricing reference and cost calculator — Claude, GPT, Gemini, Grok, Mistral, DeepSeek, Groq and more. Long-context tiers, SDK usage objects, spend tracking. Zero dependencies, library + CLI.",
   "keywords": [
     "llm",
     "pricing",
@@ -9,17 +9,22 @@
     "cost",
     "calculator",
     "tokens",
+    "token-cost",
+    "api-cost",
     "openai",
     "anthropic",
     "claude",
     "gpt",
     "gemini",
+    "grok",
     "deepseek",
     "mistral",
-    "grok",
+    "groq",
+    "perplexity",
+    "cohere",
     "ai",
-    "api-cost",
-    "token-cost",
+    "llmops",
+    "finops",
     "cli"
   ],
   "license": "MIT",
@@ -52,11 +57,13 @@
     "index.d.ts",
     "bin/",
     "data/",
-    "scripts/"
+    "scripts/",
+    "CHANGELOG.md"
   ],
   "scripts": {
-    "test": "node --test test/basic.test.cjs",
-    "update-prices": "node scripts/update.mjs"
+    "test": "node --test \"test/*.test.cjs\"",
+    "update-prices": "node scripts/update.mjs",
+    "check-prices": "node scripts/update.mjs --check"
   },
   "engines": {
     "node": ">=18"
